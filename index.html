@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Michael Arikenbi — Data Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<!-- FontAwesome for clean, professional icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+  /* =============================================
+     BRANDING & COSMETIC CONTROLS
+     ============================================= */
+  :root {
+    --accent: #1a6b55;         /* Deep Corporate Emerald */
+    --accent-light: #e8f5f0;   /* Light Mint Background Tint */
+    --accent-mid: #2e9471;     /* Mid Shade Accent */
+    --text: #1c1c1c;
+    --text-muted: #6b7280;
+    --bg: #fdfcf9;
+    --surface: #ffffff;
+    --border: #e8e4dc;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(253,252,249,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 7rem 5% 5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 440px;
+    margin-bottom: 2rem;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent-mid); }
+  .btn-ghost {
+    border: 1.5px solid var(--border);
+    color: var(--text);
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Hero Stats */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .stat-box {
+    background: var(--surface);
+    padding: 1.5rem;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── SECTION STRUCTURE ── */
+  section { padding: 5rem 5%; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-header { margin-bottom: 3rem; }
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    max-width: 520px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-photo-block { position: relative; }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--accent-light);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-mid);
+    font-size: 0.85rem;
+    font-weight: 500;
+    overflow: hidden;
+  }
+  .about-photo-label {
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+  }
+  .about-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .about-content p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-size: 0.975rem;
+  }
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1.5rem;
+  }
+  .skill-tag {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid #b8dfce;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* ── PROJECTS GRID REFACTOR ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 2rem;
+  }
+  @media (max-width: 600px) {
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 36px rgba(26, 107, 85, 0.08);
+    border-color: #b8dfce;
+  }
+  .project-header {
+    margin-bottom: 14px;
+  }
+  .project-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .project-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--text);
+    line-height: 1.3;
+    font-weight: 700;
+  }
+  .project-description {
+    color: var(--text-muted);
+    font-size: 0.925rem;
+    line-height: 1.65;
+    margin-bottom: 22px;
+    flex-grow: 1;
+  }
+
+  /* Refined Tech Badges */
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .badge {
+    font-size: 0.78rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .sql-badge { background: #e0f2fe; color: #0369a1; }
+  .bi-badge { background: #fef9c3; color: #a16207; }
+  .excel-badge { background: #e0f5e9; color: #136336; }
+  .tab-badge { background: #f3e8ff; color: #6b21a8; }
+
+  /* Card Action Links */
+  .project-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .card-btn-dark {
+    background: var(--accent);
+    color: #ffffff;
+  }
+  .card-btn-dark:hover {
+    background: var(--accent-mid);
+  }
+  .card-btn-light {
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid #b8dfce;
+  }
+  .card-btn-light:hover {
+    background: #d1ede3;
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience-section { background: #f7f5f0; }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.38rem;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .timeline-date {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .timeline-role {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .timeline-company {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── TOOLS ── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .tool-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .tool-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .tool-level {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .tool-bar {
+    margin-top: 8px;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .tool-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section { background: var(--accent); color: #fff; }
+  .contact-section .section-title { color: #fff; }
+  .contact-section .section-sub { color: rgba(255,255,255,0.7); }
+  .contact-section .section-tag { color: rgba(255,255,255,0.6); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: #fff; }
+  .contact-link-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-form input,
+  .contact-form textarea {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form textarea { min-height: 100px; resize: vertical; }
+  .contact-form button {
+    background: #fff;
+    color: var(--accent);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: opacity 0.2s;
+  }
+  .contact-form button:hover { opacity: 0.9; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 5% 3rem; }
+    .hero-stats { max-width: 360px; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Michael Arikenbi</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+<section class="hero">
+  <div>
+    <span class="hero-eyebrow">Data Analyst & Project Professional</span>
+    <h1>Turning <em>complex data</em> into strategic decisions</h1>
+    <p class="hero-desc">
+      I bridge the gap between technical data engineering and executive operations—using SQL, Excel, Power BI, and Tableau to translate systemic metrics into clear boardroom strategies.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Portfolio</a>
+      <a href="#contact" class="btn-ghost">Contact Me</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-box">
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Core BI Tools</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">26yrs</div>
+      <div class="stat-label">Historical Data Analyzed</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Pipeline Accuracy</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">0</div>
+      <div class="stat-label">RAID Trailing Risks</div>
+    </div>
+  </div>
+</section>
+
+
+<section id="about">
+<div class="container">
+  <div class="section-header">
+    <div class="section-tag">About Me</div>
+    <h2 class="section-title">Analyst. Controls Specialist. Storyteller.</h2>
+  </div>
+  <div class="about-content">
+    <h3>Hi, I'm Michael Arikenbi</h3>
+    <p>
+      I am a Junior Project Professional and Data Analyst based in Lagos, Nigeria. My professional expertise lies at the intersection of operational project controls and advanced data analysis, enabling organizations to optimize metrics while actively minimizing performance risks.
+    </p>
+    <p>
+      I specialize in parsing complex multi-source datasets, developing custom time-intelligence queries, and constructing interactive dashboards that protect baseline metrics. Whether managing action logs or conducting automated outlier detection for global inflation indices, I design with the final executive stakeholder in mind.
+    </p>
+
+    <div class="skills-list">
+      <span class="skill-tag">SQL Server</span>
+      <span class="skill-tag">Excel Power Query</span>
+      <span class="skill-tag">Power BI & DAX</span>
+      <span class="skill-tag">Tableau Desktop</span>
+      <span class="skill-tag">Data Schema Normalization</span>
+      <span class="skill-tag">Project Controls & RAID Logs</span>
+      <span class="skill-tag">Macroeconomic Tracking</span>
+      <span class="skill-tag">Data Storytelling</span>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section id="projects" style="background:#f7f5f0;">
+<div class="container">
+  <div class="section-header">
+    <div class="section-tag">Featured Portfolio</div>
+    <h2 class="section-title">Selected Projects</h2>
+    <p class="section-sub">Demonstrating end-to-end data processing, advanced modeling, and clean visual deployment.</p>
+  </div>
+
+  <div class="projects-grid">
+
+   <!-- CARD 1: SQL CORE -->
+<div class="project-card">
+  <div class="project-header">
+    <span class="project-category">Database Engineering</span>
+    <h3 class="project-title">Global CPI Data Infrastructure & Relational ETL Pipeline</h3>
+  </div>
+  <p class="project-description">
+    Engineered a scalable relational database architecture in SQL Server to ingest and normalize raw United Nations matrix structures. Authored complex T-SQL scripts to sweep and clean historical hyperinflation anomalies, unpivot 25 years of horizontal timelines, and implement an optimized, transaction-ready Star Schema.
+  </p>
+  <div class="tech-stack">
+    <span class="badge sql-badge">T-SQL (SQL Server)</span>
+    <span class="badge sql-badge">ETL Architecture</span>
+    <span class="badge sql-badge">Star Schema</span>
+    <span class="badge sql-badge">Data Cleaning</span>
+  </div>
+  <div class="project-links">
+    <a href="https://github.com/Michaelarikennbi/global-inflation-data-pipeline/blob/main/Fao-cpi-sql-pipeline.Sql" target="_blank" class="card-btn card-btn-dark">
+      <i class="fab fa-github"></i> View SQL Pipeline
+    </a>
+    <a href="https://github.com/Michaelarikennbi/global-inflation-data-pipeline/blob/main/Fao_cpi_sql_pipeline_README.md" target="_blank" class="card-btn card-btn-light">
+      <i class="fas fa-book-open"></i> Read Pipeline Architecture
+    </a>
+  </div>
+</div>
+
+<!-- CARD 2: POWER BI CORE -->
+<div class="project-card">
+  <div class="project-header">
+    <span class="project-category">Business Intelligence</span>
+    <h3 class="project-title">Macroeconomic Inflation Intelligence & Risk Dashboard</h3>
+  </div>
+  <p class="project-description">
+    Architected an executive-facing interactive dashboard connected directly to a SQL data warehouse. Programmed sophisticated DAX measures to isolate mathematical market variance, built dynamic category filtering toggles, and engineered a customizable Volatility Index framework for stress-testing corporate asset exposure.
+  </p>
+  <div class="tech-stack">
+    <span class="badge bi-badge">Power BI Desktop</span>
+    <span class="badge bi-badge">Advanced DAX</span>
+    <span class="badge bi-badge">Data Modeling</span>
+    <span class="badge bi-badge">Data Storytelling</span>
+  </div>
+  <div class="project-links">
+    <a href="https://github.com/Michaelarikennbi/global-inflation-data-pipeline/blob/main/dax_measures.dax" target="_blank" class="card-btn card-btn-dark">
+      <i class="fas fa-code"></i> View BI Insights
+    </a>
+    <a href="https://github.com/Michaelarikennbi/global-inflation-data-pipeline/blob/main/POWER_BI_README.md" target="_blank" class="card-btn card-btn-light">
+      <i class="fas fa-chart-pie"></i> Read Analytics Case Study
+    </a>
+  </div>
+</div>
+
+    <!-- CARD 3: EXCEL CORE -->
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-category">Spreadsheet Analytics</span>
+        <h3 class="project-title">Global Tech Professionals Survey Analytics Engine</h3>
+      </div>
+      <p class="project-description">
+        Developed an end-to-end automated survey ingestion pipeline utilizing advanced Excel engines. Leveraged Power Query to transform unformatted international feedback rows, engineered programmatic error-handling logic to intercept corrupt entries, and established a dynamic Pivot cockpit charting cross-border salary distribution maps.
+      </p>
+      <div class="tech-stack">
+        <span class="badge excel-badge">Advanced Excel</span>
+        <span class="badge excel-badge">Power Query</span>
+        <span class="badge excel-badge">Pivot Modeling</span>
+        <span class="badge excel-badge">Data Quality Control</span>
+      </div>
+      <div class="project-links">
+        <a href="#" target="_blank" class="card-btn card-btn-dark"><i class="far fa-file-excel"></i> View Spreadsheet</a>
+        <a href="#" target="_blank" class="card-btn card-btn-light">Documentation</a>
+      </div>
+    </div>
+
+    <!-- CARD 4: TABLEAU CORE -->
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-category">Visual Analytics</span>
+        <h3 class="project-title">Cross-Sector Market Volatility & Performance Mapping</h3>
+      </div>
+      <p class="project-description">
+        Designed an exploratory visual analytical application in Tableau Public evaluating multi-sector price changes. Built custom parameters enabling users to execute real-time statistical binning, integrated complex Level of Detail (LOD) expressions to decouple tracking error trends, and optimized spatial visualizations.
+      </p>
+      <div class="tech-stack">
+        <span class="badge tab-badge">Tableau Desktop</span>
+        <span class="badge tab-badge">LOD Expressions</span>
+        <span class="badge tab-badge">Dynamic Parameters</span>
+        <span class="badge tab-badge">Exploratory Viz</span>
+      </div>
+      <div class="project-links">
+        <a href="#" target="_blank" class="card-btn card-btn-dark"><i class="fas fa-window-maximize"></i> View Interactive Dashboard</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+
+<section id="experience" class="experience-section">
+<div class="container">
+  <div class="section-header">
+    <div class="section-tag">Career & Context</div>
+    <h2 class="section-title">Experience & Education</h2>
+  </div>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-date">September 2025 — Present</div>
+      <div class="timeline-role">Junior Project Professional (Project Controls)</div>
+      <div class="timeline-company">Lagos, Nigeria</div>
+      <div class="timeline-desc">
+        Manage operational workflows, optimize action trackers, and maintain rigorous RAID logs to minimize baseline execution risk. Spearhead transition toward data-driven dashboard tracking to streamline stakeholder status reporting.
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Enrolled</div>
+      <div class="timeline-role">B.A. International Studies</div>
+      <div class="timeline-company">Distance Learning Centre, Ahmadu Bello University</div>
+      <div class="timeline-desc">
+        Developing strong macro-level analytical frameworks regarding global systems, policy tracks, and international economics—providing an ideal background for evaluating complex, cross-border macroeconomic data trends.
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+
+<section id="tools">
+<div class="container">
+  <div class="section-header">
+    <div class="section-tag">Technical Profile</div>
+    <h2 class="section-title">Tools & Technologies</h2>
+    <p class="section-sub">My active technical stack for database engineering and intelligence architecture.</p>
+  </div>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <span class="tool-icon">🗄️</span>
+      <div class="tool-name">SQL</div>
+      <div class="tool-level">Advanced (Queries / Joins)</div>
+      <div class="tool-bar"><div class="tool-bar-fill" style="width:88%"></div></div>
+    </div>
+    <div class="tool-card">
+      <span class="tool-icon">📊</span>
+      <div class="tool-name">Power BI</div>
+      <div class="tool-level">Advanced (DAX / Modeling)</div>
+      <div class="tool-bar"><div class="tool-bar-fill" style="width:85%"></div></div>
+    </div>
+    <div class="tool-card">
+      <span class="tool-icon">📈</span>
+      <div class="tool-name">Tableau</div>
+      <div class="tool-level">Intermediate (Binning / Viz)</div>
+      <div class="tool-bar"><div class="tool-bar-fill" style="width:75%"></div></div>
+    </div>
+    <div class="tool-card">
+      <span class="tool-icon">📉</span>
+      <div class="tool-name">Excel</div>
+      <div class="tool-level">Advanced (Power Query)</div>
+      <div class="tool-bar"><div class="tool-bar-fill" style="width:90%"></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section id="contact" class="contact-section">
+<div class="container">
+  <div class="contact-grid">
+    <div>
+      <div class="section-tag">Contact</div>
+      <h2 class="section-title">Let's work together</h2>
+      <p class="section-sub">
+        Available for data analysis contracts, professional collaborations, and full-time analyst opportunities. Drop a line to connect.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:michael@example.com" class="contact-link">
+          <span class="contact-link-icon">✉️</span>
+          michael@example.com
+        </a>
+        <a href="https://linkedin.com/in/michaelarikenbi" class="contact-link">
+          <span class="contact-link-icon">💼</span>
+          linkedin.com/in/michaelarikenbi
+        </a>
+        <a href="https://github.com/michaelarikenbi" class="contact-link">
+          <span class="contact-link-icon">💻</span>
+          github.com/michaelarikenbi
+        </a>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="Your name" />
+      <input type="email" placeholder="Your email" />
+      <textarea placeholder="Tell me about your project or role…"></textarea>
+      <button type="submit">Send Message →</button>
+    </form>
+  </div>
+</div>
+</section>
+
+
+<footer>
+  <span>© 2026 Michael Arikenbi. All rights reserved.</span>
+  <span>Built with clean HTML & CSS</span>
+</footer>
+
+</body>
+</html>
